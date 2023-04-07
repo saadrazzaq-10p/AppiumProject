@@ -8,8 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-import static java.lang.Thread.sleep;
-
 public class SignUpPage {
 
     public SignUpPage() {

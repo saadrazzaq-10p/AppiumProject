@@ -1,12 +1,7 @@
 package utilities;
-
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
+import org.apache.poi.xssf.usermodel.*;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 
 public class excelFileReader {
 
@@ -25,8 +20,9 @@ public class excelFileReader {
         File src = new File(configFileReader.getExcelPath());
         try {
             FileInputStream file = new FileInputStream(src);
-            XSSFWorkbook workbook = new XSSFWorkbook(file);
-            sheet = workbook.getSheetAt(0);
+            try (XSSFWorkbook workbook = new XSSFWorkbook(file)) {
+                sheet = workbook.getSheetAt(0);
+            }
         } catch (Exception e) {
             System.out.println("You got an" + e);
         }
